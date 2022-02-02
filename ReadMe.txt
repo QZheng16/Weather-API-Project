@@ -1,0 +1,1 @@
+Please Enter your own API key for OpenWeatherMap and AirVisual for the API requests
