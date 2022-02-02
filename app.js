@@ -1,17 +1,17 @@
 const express = require("express");
 const fetch = require('node-fetch');
-
 const app = express();
+const Datastore = require("nedb");
+const envKey = require('dotenv').config();
+
+let db = new Datastore({filename: 'weatherDB.db',  autoload: true});
 
 app.use(express.static('public'));
 app.use(express.json());
 
 
-const weather_key = "34491f9ae08e962f817ad2f82e9211d1";
-const air_key = "b7a5ca53-c04e-4109-854f-74c5b5ead214";
-
-
-
+const weather_key = process.env.WEATHER_KEY;
+const air_key = process.env.AIR_KEY;
 
 app.get('/weather/:lat/:lon', async (req, res)=>{
     let lat = req.params.lat;
@@ -28,36 +28,30 @@ app.get('/weather/:lat/:lon', async (req, res)=>{
     let airData = await fetch(air_endpoint);
     let airJson = await airData.json();
 
-    console.log(        {  
+    let weatherObject = {  
+        lat: lat,
+        lon: lon,
         city: weatherJson.name,
         temp: weatherJson.main.temp,
         icon: weatherJson.weather[0].icon,
         airQuality: airJson.data.current.pollution.aqius
 
-        });
+    }
 
+    db.insert(weatherObject, ()=> console.log(`Data Inserted into weatherDB.db: ${weatherObject}`));
 
-
-    res.json(
-        {  
-        city: weatherJson.name,
-        temp: weatherJson.main.temp,
-        icon: weatherJson.weather[0].icon,
-        airQuality: airJson.data.current.pollution.aqius
-
-        });
+    res.json(weatherObject);
     
 
 });
 
+app.get("/weatherDB", (req,res)=>{
+
+    db.find({}, (err, docs)=>{res.json(docs)});
 
 
+});
 
+let port = process.env.port || 3000;
 
-
-
-
-
-
-
-app.listen(3000, ()=> console.log("Server started on port 3000"));
+app.listen(port, ()=> console.log("Server started on port 3000"));

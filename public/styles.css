@@ -1,21 +1,19 @@
 
 html{
     min-height: 100%;
-
 }
-
 
 body {
     background-color: #A8F9FF;
-    display: grid;
-    justify-content: center;
     text-align: center;
-
-    margin-top: 10%;
-
-
-    
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    gap: 10rem;
+ 
 }
+
+
 
 h1{
     color: #775B59;
@@ -28,14 +26,43 @@ p{
 
 }
 
-.weatherBadge{
-    background-color: #9AE5E6;
-    border-radius: 15rem;
-    padding: 4rem;
-
-    margin: 2rem;
-
+button{
+    
+    min-width: 7rem;
+    margin: 1rem;
 }
+
+.weatherSection{
+  display: grid;
+  justify-content: center;
+}
+
+.mapSection{
+  margin-top: 5rem;
+}
+
+.weatherBadge{
+  background-color: #9AE5E6;
+  border-radius: 15rem;
+  padding: 4rem;
+  
+
+  margin: 2rem;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 30px;
+}
+
+#weatherMap{
+
+  height: 580px;
+  width: 1000px;
+  border-radius: 2rem;
+
+  margin: auto;
+}
+
+
+
+
 
 
 

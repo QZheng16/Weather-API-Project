@@ -4,27 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
     <link rel="stylesheet" href="styles.css">
+
     <title>Weather</title>
 </head>
 <body>
-    <h1>Weather Project</h1>
-    <div>
-        <p>Latitude: <span id="lat"></span></p>
-        <p>Longitude: <span id="lon"></span></p>
-
-        <div class="weatherBadge">
-            <h2>Location</h2>
-            <h3>Weather</h3>
-            <h3>Air Quality</h3>
-            <img>Image</img>
+    <section class="weatherSection">
+        <h1>Weather Project</h1>
+        <div>
+            <p>Latitude: <span id="lat"></span></p>
+            <p>Longitude: <span id="lon"></span></p>
+    
+            <div class="weatherBadge">
+                <h2>Location</h2>
+                <h3>Weather</h3>
+                <h3>Air Quality</h3>
+                <img></img>
+            </div>
+    
+            <button class="button-29" id="submit">Check-In</button>
+            <button class="button-29" id="map">Map</button>
         </div>
-
-        <button class="button-29" id="submit">Submit</button>
-    </div>
+    </section>
+    <section class="mapSection">
+        <div id="weatherMap"></div>
+    </section>
 
 
 
     <script src="client.js"></script>
+
 </body>
 </html>
